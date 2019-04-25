@@ -28,7 +28,7 @@ query = (
 data: pd.DataFrame = query.execute 
 ```
 
-You can next EasySQL objects together in subqueries:
+You can nest EasySQL objects together in subqueries:
 
 ```python
 (
@@ -64,7 +64,9 @@ This just a wrap for the mysql-connector class, so it can be used similarly by p
 EasySQL(".env").new().client
 ```
 
-or by using the EasySQL methods for DataFrame responses:
+`EasySQL().client` will only accept methods that are out of the box for mysql-connector. 
+Alternatively, use the EasySQL methods for DataFrame responses if you want to pass
+full query strings:
 
 ```python
 data: pd.DataFrame = EasySQL(".env").new().data_frame_query(query_string)
