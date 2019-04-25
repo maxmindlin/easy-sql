@@ -1,6 +1,6 @@
 Sometimes you just need a lightweight DB client outside a traditional MVC.
 
-Requires a .env file in the format (`DB_TUNNEL` is optional is you pass `tunnel=False` to EasySQL):
+Requires a .env file in the format (`DB_TUNNEL` is optional if you pass `tunnel=False` to EasySQL):
 ```
 DB_USER=
 DB_PASS=
