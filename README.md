@@ -28,17 +28,17 @@ query = (
 data: pd.DataFrame = query.execute 
 ```
 
-You can chain EasySQL objects together in subqueries:
+You can next EasySQL objects together in subqueries:
 
 ```python
 (
-    SQLQueryBuilder()
+    EasySQL(".env")
     .SELECT(["foo","bar"])
     .FROM("table")
     .JOIN("table2").LEFT().USING("field3")
     .SUBQUERY(
         (
-            SQLQueryBuilder()
+            EasySQL(".env")
             .SELECT(["foo_"])
             .FROM("table3")
         ), 
