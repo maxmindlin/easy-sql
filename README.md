@@ -28,6 +28,29 @@ query = (
 data: pd.DataFrame = query.execute 
 ```
 
+You can chain EasySQL objects together in subqueries:
+
+```python
+(
+    SQLQueryBuilder()
+    .SELECT(["foo","bar"])
+    .FROM("table")
+    .JOIN("table2").LEFT().USING("field3")
+    .SUBQUERY(
+        (
+            SQLQueryBuilder()
+            .SELECT(["foo_"])
+            .FROM("table3")
+        ), 
+        alias="sub_query", 
+        join_left="foo", 
+        join_right="foo_"
+    )
+    .WHERE("foo = 1")
+    .LIMIT(100)
+)
+```
+
 You can also pull out a new SQL client like so:
 
 ```python

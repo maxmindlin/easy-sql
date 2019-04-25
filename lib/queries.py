@@ -44,6 +44,13 @@ class SQLQueryBuilder:
         
         return self
     
+    def SUBQUERY(self, query_obj: SQLQueryBuilder, alias: str, join_left: str, join_right: str) -> SQLQueryBuilder:
+        
+        sub = query_obj.query
+        self._query["join"] += "JOIN (" + sub + ") AS " + alias + " "
+        self._query["join"] += "ON " + join_right + " = " + join_right + " "
+        return self
+    
     def LEFT(self) -> SQLQueryBuilder:
         """Adds a join using the 'LEFT' keyword."""
 
@@ -118,4 +125,3 @@ class SQLQueryBuilder:
 
         statements = [s for s in list(self._query.values()) if s != ""]
         return " ".join(statements)
-    
